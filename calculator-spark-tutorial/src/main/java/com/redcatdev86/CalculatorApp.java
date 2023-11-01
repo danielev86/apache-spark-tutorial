@@ -15,15 +15,16 @@ public class CalculatorApp {
         Logger.getLogger("org.apache").setLevel(Level.WARN);
         SparkConf calculatorSparkConf = new SparkConf().setAppName("CalculatorSpark").setMaster("local[*]");
         JavaSparkContext jsc = new JavaSparkContext(calculatorSparkConf);
-        JavaRDD<Integer> calcRdd = jsc.parallelize(randomList());
-        Integer result = calcRdd.reduce((v1,v2)-> v1+v2);
-        System.out.println("Result value: " + result);
+        JavaRDD<Double> calcRdd = jsc.parallelize(randomList());
+        JavaRDD<Integer> intMapRdd = calcRdd.map(value -> value.intValue());
+        int result = intMapRdd.reduce((val1,val2) -> val1 + val2);
+        System.out.println("Result value: " + Math.sqrt(result));
     }
 
-    public static List<Integer> randomList(){
-        List<Integer> elements = new ArrayList<>();
+    public static List<Double> randomList(){
+        List<Double> elements = new ArrayList<>();
         for (int i = 0; i<10000;i++){
-            elements.add(2);
+            elements.add(2d);
         }
         return elements;
     }
