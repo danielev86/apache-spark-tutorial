@@ -23,6 +23,7 @@ public class CalculatorApp {
         JavaRDD<Long> numOfElementRDD = calcRdd.map(value -> 1L);
         Long numOfElement = numOfElementRDD.reduce((val1,val2) -> val1 + val2);
         System.out.println("Number of element in rdd: " + numOfElement);
+        jsc.close();
     }
 
     public static List<Double> randomList(){
