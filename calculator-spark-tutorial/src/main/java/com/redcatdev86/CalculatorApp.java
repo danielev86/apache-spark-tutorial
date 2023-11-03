@@ -19,6 +19,10 @@ public class CalculatorApp {
         JavaRDD<Integer> intMapRdd = calcRdd.map(value -> value.intValue());
         int result = intMapRdd.reduce((val1,val2) -> val1 + val2);
         System.out.println("Result value: " + Math.sqrt(result));
+        //Calculate num of element in a rdd
+        JavaRDD<Long> numOfElementRDD = calcRdd.map(value -> 1L);
+        Long numOfElement = numOfElementRDD.reduce((val1,val2) -> val1 + val2);
+        System.out.println("Number of element in rdd: " + numOfElement);
     }
 
     public static List<Double> randomList(){
