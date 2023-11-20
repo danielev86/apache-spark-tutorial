@@ -35,10 +35,10 @@ public class Application {
     }
 
     private static List<String> splitData(String data){
-        String rawLine = data.replace("," , "")
-                .replace(".", "")
-                .replace(";", "")
-                .replace(";", "");
+        String rawLine = data.replaceAll("," , "")
+                .replaceAll(".", "")
+                .replaceAll(";", "")
+                .replaceAll(";", "");
         return Arrays.asList(rawLine.split(" "));
     }
 
