@@ -32,6 +32,8 @@ public class Application {
         long element = words.map(data -> 1L).reduce((val1,val2) -> val1 + val2);
         System.out.println("Num of words: " + element);
 
+        jsc.close();
+
     }
 
     private static List<String> splitData(String data){
